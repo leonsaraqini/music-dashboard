@@ -1,17 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FirebaseService } from './firebase/firebase.service';
-import { ListsController } from './lists/lists.controller';
-import { FirebaseModule } from './firebase/firebase.module';
-import { ConfigModule } from '@nestjs/config';
-import { AuthController } from './auth/auth.controller';
-import { MusicController } from './music/music.controller';
+import { MusicModule } from './music/music.module';
+import { AuthModule } from './auth/auth.module';
+import { ListsModule } from './lists/lists.module';
 
 
 @Module({
-  imports: [FirebaseModule],
-  controllers: [AppController, ListsController, AuthController, MusicController],
-  providers: [AppService, FirebaseService],
+  imports: [MusicModule, AuthModule, ListsModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
